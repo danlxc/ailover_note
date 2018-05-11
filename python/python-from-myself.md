@@ -128,7 +128,7 @@ scheduler.add_listener(my_listener, events.EVENT_JOB_MISSED | events.EVENT_JOB_E
 
 try:
     scheduler.start()
-# 如下表示当被键盘打断的时候,这再一次执行代码
+  //如下表示当被键盘打断的时候,这再一次执行代码
 except (KeyboardInterrupt, SystemExit):
     print('The job by KeyboardInterrupt :)')
     job()
