@@ -205,4 +205,62 @@ if __name__ == '__main__':
         scheduler.shutdown()
         print('Exit The Job!')
 ```
+##### 查看模块版本
+```
+module.__version__
+ //例,查看flask模块的版本
+
+>>> import flask
+>>> flask.__version__
+'0.10.1'
+
+ //或者查看下模块下面的属性有没关于查看版本的
+ dir(module)
+```
+#### python logging 日志
+
+##### python logging 配置
+```
+log = logging.getLogger('apscheduler.executors.default')
+    logging.basicConfig(level=logging.INFO,
+                        format='[%(asctime)s] [%(levelname)s] [%(name)s:%(lineno)d] %(message)s',
+                        datefmt='%Y-%m-%d %H:%M:%S',
+                        filename='F:\OneDrive\python\loggerDemo.log',
+                        filemode='a')  # w 删除之前的 重新写入 a 追加写入日志
+
+    log.info('start to do it')
+```
+
+##### python logging 级别
+```
+logging.debug('debug message')
+logging.info('info message')
+logging.warn('warn message')
+logging.error('error message')
+logging.critical('critical message')
+```
+
+##### python 获取文件名路径
+```
+import sys
+sys.argv[0]
+```
+
+##### job 工作时间计算
+```
+    end_time = datetime.now()
+    logger.info('The work end')
+
+    needTime = "The work took %0.2f minutes" % (
+        (end_time - start_time).seconds / 60)
+    logger.info(needTime)
+
+except (IndexError, Exception) as e:
+    logger.exception(e)
+    logger.info('The work crash')
+finally:
+    cursor.close()
+    db2.close()
+    db.close()
+```
 
