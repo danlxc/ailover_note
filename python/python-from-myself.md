@@ -150,7 +150,7 @@ isFlag = False
 
 #### 定时器apscheduler 之 守护线程(两个线程同时进行)
 ```
-# coding=utf-8
+// coding=utf-8
 """
 Demonstrates how to use the background scheduler to schedule a job that executes on 3 second
 intervals.
