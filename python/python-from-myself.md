@@ -10,9 +10,11 @@ time.strftime("%Y-%m-%d %H:%M:%S")
 time.asctime()
 ```
 ** **
+
 ##### 线程睡眠
 `time.sleep(5)`
 ** **
+
 ##### 时间差以秒表示,并且表刘两位小数
 ```
 i = datetime.now()
