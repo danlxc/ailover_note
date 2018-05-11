@@ -22,6 +22,7 @@ j = datetime.now()
 round((j-i).seconds/60,2)
 ```
 ** **
+
 ##### 定时器apscheduler
 - coalesce：当由于某种原因导致某个job积攒了好几次没有实际运行（比如说系统挂了5分钟后恢复，有一个任务是每分钟跑一次的，按道理说这5分钟内本来是“计划”运行5次的，但实际没有执行），如果coalesce为True，下次这个job被submit给executor时，只会执行1次，也就是最后这次，如果为False，那么会执行5次（不一定，因为还有其他条件，看后面misfire_grace_time的解释）
 - max_instance: 就是说同一个job同一时间最多有几个实例再跑，比如一个耗时10分钟的job，被指定每分钟运行1次，如果我们max_instance值为5，那么在第6~10分钟上，新的运行实例不会被执行，因为已经有5个实例在跑了
@@ -62,6 +63,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 ```
 ** **
+
 ##### 事件监听
 - 事件异常
 Constant    Event class Triggered when...
@@ -77,11 +79,11 @@ EVENT_JOB_MISSED    JobEvent    A job’s execution time is missed
 
 ```
 def my_listener(event):
-# 如下为missed异常
+  //如下为missed异常
     if event.exception:
         print('The job EVENT_JOB_MISSED :(')
         print('The job start again````For missed')
-#如下为正常值执行
+  //如下为正常值执行
     else :
         print('The job worked :)')
 
