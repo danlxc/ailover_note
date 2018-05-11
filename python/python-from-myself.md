@@ -79,7 +79,7 @@ def my_listener(event):
     if event.exception:
         print('The job EVENT_JOB_MISSED :(')
         print('The job start again````For missed')
-#如下为正常值执行
+# 如下为正常值执行
     else :
         print('The job worked :)')
 
