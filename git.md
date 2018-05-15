@@ -2,8 +2,6 @@
 `git diff HEAD -- readme.txt`
 ** **
 
-
-
 ## 撤销修改的两种情况
 ### 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令。
 `git checkout -- file`
