@@ -141,7 +141,7 @@ source="tutorialdata.zip:*" index="tutorialdata" | rare clientip
 
 ![](http://image.3001.net/images/20161214/14817238094190.png)
 
-## Splunk的搜索语言\(table,sort\)
+### Splunk的搜索语言\(table,sort\)
 
 #### table :返回仅由参数中指定的字段所形成的表。
 
@@ -160,4 +160,10 @@ source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clien
 ```
 
 ![](http://image.3001.net/images/20161214/14817238396881.png)
+
+### Splunk的搜索语言\(stats）
+
+对满足条件的事件进行统计
+
+
 
