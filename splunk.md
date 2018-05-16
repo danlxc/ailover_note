@@ -128,7 +128,8 @@ source="tutorialdata.zip:*" index="tutorialdata" | rare clientip
 
 
 ## Splunk的搜索语言(table,sort)
-#### table :返回仅由参数中指定的字段所形成的表。如：table _time，clientip，返回的列表中只有这两个字段,多个字段用逗号隔开基于某个字段排序（升序、降序)，降序的字段前面要使用-号，升序的使用+号.sort -clientip, +status, 先基于clientip降序排列之后，再对这个结果基于status升序
+#### table :返回仅由参数中指定的字段所形成的表。
+*如：table _time，clientip，返回的列表中只有这两个字段,多个字段用逗号隔开基于某个字段排序（升序、降序)，降序的字段前面要使用-号，升序的使用+号.sort -clientip, +status, 先基于clientip降序排列之后，再对这个结果基于status升序*
 
 
 
