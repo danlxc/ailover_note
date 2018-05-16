@@ -83,4 +83,4 @@ index="tutorialdata" sourcetype="access_common" select | head 2
 ```
 ![](http://image.3001.net/images/20161214/14817236419831.png)
 
-
+### Splunk的搜索语言(top、rare、rename as )
