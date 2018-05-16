@@ -117,7 +117,9 @@ source="tutorialdata.zip:*" index="tutorialdata" | top clientip limit=5
 source="tutorialdata.zip:*" index="tutorialdata" | top clientip |rename clientip as “攻击源” |rename count as "攻击次数"
 ```
 
-#### ![](http://image.3001.net/images/20161214/14817237571877.png)删除最后一个percent百分比字段
+#### ![](http://image.3001.net/images/20161214/14817237571877.png)
+
+#### 删除最后一个percent百分比字段
 
 ```
 source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields clientip count |rename clientip as “攻击源” |rename count as "攻击次数"  
