@@ -132,4 +132,16 @@ source="tutorialdata.zip:*" index="tutorialdata" | rare clientip
 *如：table _time，clientip，返回的列表中只有这两个字段,多个字段用逗号隔开基于某个字段排序（升序、降序)，降序的字段前面要使用-号，升序的使用+号.sort -clientip, +status, 先基于clientip降序排列之后，再对这个结果基于status升序*
 
 
+```
+source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clientip,status
+```
+![](http://image.3001.net/images/20161214/14817238249508.png)
+
+#### 针对上述中先基于clientip降序排列之后，再对这个结果基于status升序
+```
+source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clientip,status|sort -clientip,+status 
+```
+![](http://image.3001.net/images/20161214/14817238396881.png)
+
+
 
