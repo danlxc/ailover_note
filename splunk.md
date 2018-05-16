@@ -70,7 +70,6 @@ source="logs.zip:*" index="tutorialdata" (script OR select)
 
 source="logs.zip:" index="tutorialdata" sele
 ```
-
 ### ![](http://image.3001.net/images/20161214/14817236108359.png)
 
 ### Splunk的搜索语言\(head&tail\)
