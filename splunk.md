@@ -59,6 +59,8 @@ max_match
 
 ## 网络教程
 
+### 基础搜索语言
+
 ```
 source="logs.zip:*" index="tutorialdata" sourcetype=access_common clientip="127.0.0.1" select sleep 
 // 解释： #来源logs.zip 索引为：tutorialdata 源类型为：通用访问日志 搜索日志中IP为：127.0.0.1 关键字包括select 和 sleep
@@ -67,6 +69,12 @@ source="logs.zip:*" index="tutorialdata" (script OR select)
 // #： (select OR union) 逻辑或。满足一个即可。 关键字OR要大写
 
 source="logs.zip:" index="tutorialdata" sele
+```
+
+### Splunk的搜索语言\(head&tail\)
+
+```
+index="tutorialdata" sourcetype="access_common" select | head 2
 ```
 
 
