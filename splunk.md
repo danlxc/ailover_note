@@ -69,9 +69,11 @@ source="logs.zip:*" index="tutorialdata" sourcetype=access_common clientip="127.
 
 ![](http://image.3001.net/images/20161214/14817236108359.png)
 
+#### #： (select OR union) 逻辑或。满足一个即可。 关键字OR要大写
+
+
 ```
 source="logs.zip:*" index="tutorialdata" (script OR select)
-// #： (select OR union) 逻辑或。满足一个即可。 关键字OR要大写
 
 source="logs.zip:" index="tutorialdata" sele
 ```
