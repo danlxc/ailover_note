@@ -65,7 +65,7 @@ max_match
 source="logs.zip:*" index="tutorialdata" sourcetype=access_common clientip="127.0.0.1" select sleep 
 // 解释： #来源logs.zip 索引为：tutorialdata 源类型为：通用访问日志 搜索日志中IP为：127.0.0.1 关键字包括select 和 sleep
 ```
-### ![](http://image.3001.net/images/20161214/14817236108359.png)
+![](http://image.3001.net/images/20161214/14817236108359.png)
 
 ```
 source="logs.zip:*" index="tutorialdata" (script OR select)
@@ -81,6 +81,6 @@ source="logs.zip:" index="tutorialdata" sele
 index="tutorialdata" sourcetype="access_common" select | head 2
 // 管道运算符(|)，将管道左边搜索产生的结果作为右边的输入 head, 返回前n 个（离现在时间最近的）结果 tail, 返回后n 个(离现在时间最后的)结果
 ```
-
+![](http://image.3001.net/images/20161214/14817236419831.png)
 
 
