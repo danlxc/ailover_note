@@ -75,6 +75,7 @@ source="logs.zip:" index="tutorialdata" sele
 
 ```
 index="tutorialdata" sourcetype="access_common" select | head 2
+// 管道运算符(|)，将管道左边搜索产生的结果作为右边的输入 head, 返回前n 个（离现在时间最近的）结果 tail, 返回后n 个(离现在时间最后的)结果
 ```
 
 
