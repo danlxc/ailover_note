@@ -1,30 +1,27 @@
 ### splunk 笔记
 
-##### java 调用接口 By LuYu (查询注册用户数)
+##### java 调用接口 By LuYu \(查询注册用户数\)
+
 ```
-
-
 |dbxquery query="SELECT DATE_FORMAT($args.fieldName$, $args.timeType$ ) date, count(1) count FROM cj_user WHERE merchant_id = $args.bankFlag$ AND DATE_FORMAT($args.fieldName$, $args.timeType$ ) BETWEEN $args.beginTime$ AND $args.endTime$ GROUP BY  date" connection="prod"
 ```
 
 #### 统计用户资产 By HaiLong
-```
 
+    |dbxquery query="SELECT * FROM `wirich2`.`cjqfweb_user_asset_one`" connection="prod"
 
-|dbxquery query="SELECT * FROM `wirich2`.`cjqfweb_user_asset_one`" connection="prod"
+    |stats count as 持有基金数   sum(fundmarketvalue) as 总市值   sum(floatprofit) as 总收益   sum(costmoney) as 总本金 by custno
 
-|stats count as 持有基金数   sum(fundmarketvalue) as 总市值   sum(floatprofit) as 总收益   sum(costmoney) as 总本金 by custno
+    |lookup username.csv custno output name as 姓名
 
-|lookup username.csv custno output name as 姓名
+    |rename custno  as 客户号
 
-|rename custno  as 客户号
+    |table 客户号 姓名 持有基金数 总市值 总收益 总本金
 
-|table 客户号 姓名 持有基金数 总市值 总收益 总本金
-
-|eval 总收益率=round('总收益'/'总本金'*100,2)."%"
-```
+    |eval 总收益率=round('总收益'/'总本金'*100,2)."%"
 
 #### 统计
+
 ```
 index="prod01"  source!=/www/logs/redis/* source!=/www/logs/nginx/*   source!=/www/logs/zookeeper/* source!=*stdout.log  fundAmountMap OR 购买状态 OR 支付状态 OR 组合购买异步结束
 
@@ -50,10 +47,23 @@ index="prod01"  source!=/www/logs/redis/* source!=/www/logs/nginx/*   source!=/w
 
 | timechart span=1d sum(shijibuy) as 实际购买金额 cont=false
 ```
+
 ##### 上面的知识点
+
 ```
 max_match
 语法：max_match=<int>
 描述：控制正则表达式的匹配次数。如果大于 1，则生成的字段为多值字段。
 默认值：1，值 0 表示无限制。
 ```
+
+## 网络教程
+
+```
+source="logs.zip:*" index="tutorialdata" sourcetype=access_common clientip="127.0.0.1" select sleep 
+
+解释： #来源logs.zip 索引为：tutorialdata 源类型为：通用访问日志 搜索日志中IP为：127.0.0.1 关键字包括select 和 sleep
+```
+
+
+
