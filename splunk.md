@@ -95,33 +95,51 @@ fields ：保留或删除搜索结果中的字段。fiels – xx 删除xx字段�
 ```
 source="tutorialdata.zip:*" index="tutorialdata" | top clientip 
  （获取出现次数最多的IP，降序排列）
+```
+![](http://image.3001.net/images/20161214/1481723737559.png)
 
-图片
-
+```
 source="tutorialdata.zip:*" index="tutorialdata" | top clientip limit=5 
 (在上方结果中限制显示前5条)
+```
+![](http://image.3001.net/images/20161214/148172374734.png)
 
-图片
-
-#source="tutorialdata.zip:*" index="tutorialdata" | top clientip |rename clientip as “攻击源” |rename count as "攻击次数" 
+```
+source="tutorialdata.zip:*" index="tutorialdata" | top clientip |rename clientip as “攻击源” |rename count as "攻击次数" 
 （为两个字段设置别名）
+```
+![](http://image.3001.net/images/20161214/14817237571877.png)
 
-图片
+```
+source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields clientip count |rename clientip as “攻击源” |rename count as "攻击次数"  (删除最后一个percent百分比字段) 或者： 
 
-#source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields clientip count |rename clientip as “攻击源” |rename count as "攻击次数"  (删除最后一个percent百分比字段) 或者： 
+source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields - percent |rename clientip as “攻击源” |rename count as "攻击次数" | fields
+```
+![]()
 
-#source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields - percent |rename clientip as “攻击源” |rename count as "攻击次数" | fields
+```
 
-图片
+
+
 
 可以保存为饼状图的仪表盘
+```
+![]()
 
-图片
+```
+
+
+
 
 source="tutorialdata.zip:*" index="tutorialdata" | rare clientip 
 (返回clientip最少的10个，升序排序)
+```
+![]()
 
-图片
+```
+
+
+
 ```
 
 
