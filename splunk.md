@@ -164,11 +164,38 @@ source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clien
 ### Splunk的搜索语言\(stats）
 
 #### 对满足条件的事件进行统计
-*stats count() ：括号中可以插入字段，主要作用对事件进行计数
-stats dc()：distinct count，去重之后对唯一值进行统计
-stats values()，去重复后列出括号中的字段内容
-stats list()，未去重之后列出括号指定字段的内容
-stats avg()，求平均值*
+
+_stats count\(\) ：括号中可以插入字段，主要作用对事件进行计数  
+stats dc\(\)：distinct count，去重之后对唯一值进行统计  
+stats values\(\)，去重复后列出括号中的字段内容  
+stats list\(\)，未去重之后列出括号指定字段的内容  
+stats avg\(\)，求平均值_
+
+```
+source="tutorialdata.zip:*" index="tutorialdata" host="www1"|stats count(clientip)
+ [统计clientip数量]
+
+图片 http://image.3001.net/images/20161214/14817238617654.png
+
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" |stats dc(clientip) 
+[dc去重复之后再进行统计]
+
+图片 http://image.3001.net/images/20161214/14817242495436.png
+
+可视化可以使用“径向仪表”，对满足一定数量进行不同颜色标记，可存为现有的仪表盘面板。
+
+图片 http://image.3001.net/images/20161214/14817242599180.png
+
+index="tutorialdata" sourcetype="access_combined_wcookie" |stats values(host) as "主机列表" 
+[去除重复后列出字段的内容]
+
+图片 http://image.3001.net/images/20161214/14817242662553.png
+
+ index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" |stats list(host) 
+[未去除重复列出括号中的内容]
+
+图片 http://image.3001.net/images/20161216/14818732606406.png
+```
 
 
 
