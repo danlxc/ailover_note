@@ -61,14 +61,16 @@ max_match
 
 ### 基础搜索语言
 
-#### 解释： #来源logs.zip 索引为：tutorialdata 源类型为：通用访问日志 搜索日志中IP为：127.0.0.1 关键字包括select 和 sleep
+#### 解释： \#来源logs.zip 索引为：tutorialdata 源类型为：通用访问日志 搜索日志中IP为：127.0.0.1 关键字包括select 和 sleep
+
 ```
-source="logs.zip:*" index="tutorialdata" sourcetype=access_common clientip="127.0.0.1" select sleep 
+source="logs.zip:*" index="tutorialdata" sourcetype=access_common clientip="127.0.0.1" select sleep
 ```
+
 ![](http://image.3001.net/images/20161214/14817236108359.png)
 
+#### \(select OR union\) 逻辑或。满足一个即可。 关键字OR要大写
 
-#### (select OR union) 逻辑或。满足一个即可。 关键字OR要大写
 ```
 source="logs.zip:*" index="tutorialdata" (script OR select)
 
@@ -77,12 +79,13 @@ source="logs.zip:" index="tutorialdata" sele
 
 ### Splunk的搜索语言\(head&tail\)
 
-#### 管道运算符(|)，将管道左边搜索产生的结果作为右边的输入 head, 返回前n 个（离现在时间最近的）结果 tail, 返回后n 个(离现在时间最后的)结果
+#### 管道运算符\(\|\)，将管道左边搜索产生的结果作为右边的输入 head, 返回前n 个（离现在时间最近的）结果 tail, 返回后n 个\(离现在时间最后的\)结果
+
 ```
 index="tutorialdata" sourcetype="access_common" select | head 2
 ```
-![](http://image.3001.net/images/20161214/14817236419831.png)
 
+![](http://image.3001.net/images/20161214/14817236419831.png)
 
 ### Splunk的搜索语言\(top、rare、rename as \)
 
@@ -93,55 +96,66 @@ rename xx as zz : 为xx字段设置别名为zz,多个之间用 ，隔开
 fields ：保留或删除搜索结果中的字段。fiels – xx 删除xx字段，保留则不需要 – 符号_
 
 #### 获取出现次数最多的IP，降序排列
+
 ```
-source="tutorialdata.zip:*" index="tutorialdata" | top clientip 
+source="tutorialdata.zip:*" index="tutorialdata" | top clientip
 ```
+
 ![](http://image.3001.net/images/20161214/1481723737559.png)
 
 #### 在上方结果中限制显示前5条
+
 ```
-source="tutorialdata.zip:*" index="tutorialdata" | top clientip limit=5 
+source="tutorialdata.zip:*" index="tutorialdata" | top clientip limit=5
 ```
+
 ![](http://image.3001.net/images/20161214/148172374734.png)
 
 #### 为两个字段设置别名
-```
-source="tutorialdata.zip:*" index="tutorialdata" | top clientip |rename clientip as “攻击源” |rename count as "攻击次数" 
-```
-![](http://image.3001.net/images/20161214/14817237571877.png)
 
 ```
-source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields clientip count |rename clientip as “攻击源” |rename count as "攻击次数"  (删除最后一个percent百分比字段) 或者： 
+source="tutorialdata.zip:*" index="tutorialdata" | top clientip |rename clientip as “攻击源” |rename count as "攻击次数"
+```
 
+#### ![](http://image.3001.net/images/20161214/14817237571877.png)删除最后一个percent百分比字段
+
+```
+source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields clientip count |rename clientip as “攻击源” |rename count as "攻击次数"  
+ 或者： 
 source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields - percent |rename clientip as “攻击源” |rename count as "攻击次数" | fields
 ```
+
 ![](http://image.3001.net/images/20161214/14817237838432.png)
 
 #### 可以保存为饼状图的仪表盘
+
 ![](http://image.3001.net/images/20161214/14817237958177.png)
 
 #### 返回clientip最少的10个，升序排序
+
 ```
-source="tutorialdata.zip:*" index="tutorialdata" | rare clientip 
+source="tutorialdata.zip:*" index="tutorialdata" | rare clientip
 ```
+
 ![](http://image.3001.net/images/20161214/14817238094190.png)
 
+## Splunk的搜索语言\(table,sort\)
 
-## Splunk的搜索语言(table,sort)
 #### table :返回仅由参数中指定的字段所形成的表。
-*如：table _time，clientip，返回的列表中只有这两个字段,多个字段用逗号隔开基于某个字段排序（升序、降序)，降序的字段前面要使用-号，升序的使用+号.sort -clientip, +status, 先基于clientip降序排列之后，再对这个结果基于status升序*
 
+_如：table \_time，clientip，返回的列表中只有这两个字段,多个字段用逗号隔开基于某个字段排序（升序、降序\)，降序的字段前面要使用-号，升序的使用+号.sort -clientip, +status, 先基于clientip降序排列之后，再对这个结果基于status升序_
 
 ```
 source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clientip,status
 ```
+
 ![](http://image.3001.net/images/20161214/14817238249508.png)
 
 #### 针对上述中先基于clientip降序排列之后，再对这个结果基于status升序
+
 ```
-source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clientip,status|sort -clientip,+status 
+source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clientip,status|sort -clientip,+status
 ```
+
 ![](http://image.3001.net/images/20161214/14817238396881.png)
-
-
 
