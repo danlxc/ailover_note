@@ -115,26 +115,20 @@ source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields clientip 
 
 source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields - percent |rename clientip as “攻击源” |rename count as "攻击次数" | fields
 ```
-![]()
+![](http://image.3001.net/images/20161214/14817237838432.png)
 
 ```
-
-
-
 
 可以保存为饼状图的仪表盘
 ```
-![]()
+![](http://image.3001.net/images/20161214/14817237958177.png)
 
 ```
-
-
-
 
 source="tutorialdata.zip:*" index="tutorialdata" | rare clientip 
 (返回clientip最少的10个，升序排序)
 ```
-![]()
+![](http://image.3001.net/images/20161214/14817238094190.png)
 
 ```
 
