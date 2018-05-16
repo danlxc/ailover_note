@@ -163,7 +163,12 @@ source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clien
 
 ### Splunk的搜索语言\(stats）
 
-对满足条件的事件进行统计
+#### 对满足条件的事件进行统计
+*stats count() ：括号中可以插入字段，主要作用对事件进行计数
+stats dc()：distinct count，去重之后对唯一值进行统计
+stats values()，去重复后列出括号中的字段内容
+stats list()，未去重之后列出括号指定字段的内容
+stats avg()，求平均值*
 
 
 
