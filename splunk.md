@@ -199,7 +199,39 @@ index="tutorialdata" sourcetype="access_combined_wcookie" |stats values(host) as
 
 ### Splunk的搜索语言\(chart\)
 
-在用于制作图表的表格输出中返回结果
+#### 在用于制作图表的表格输出中返回结果
+
+```
+chart count():
+
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host
+[统计字段status=200以及action=purchase的事件，并且以host字段来进行排列显示]
+
+图片
+
+图片
+
+chart max()
+
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host|chart max(count)
+ [求出最大值]
+
+图片
+
+chart min()
+
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host|chart min(count) 
+ [求出最小值]
+
+图片
+
+chart avg()
+
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host|chart avg(count)
+[根据第一次的结果求出平均值]
+
+图片
+```
 
 
 
