@@ -251,7 +251,7 @@ index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=pur
 
 ### 子搜索\(\[search \]\)
 
-子搜索包含在方括号\[\]中
+#### 子搜索包含在方括号\[\]中
 
 ```
 注:以下字段中含义：action=purchase代表成功购买产品 status表示状态为200
