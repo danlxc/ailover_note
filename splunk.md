@@ -199,7 +199,7 @@ index="tutorialdata" sourcetype="access_combined_wcookie" |stats values(host) as
 
 ### Splunk的搜索语言\(chart\)
 
-
+在用于制作图表的表格输出中返回结果
 
 
 
