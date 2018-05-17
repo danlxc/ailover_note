@@ -321,7 +321,7 @@ where:条件查询
 index="apachedata" sourcetype="access_combined_wcookie"|iplocation clientip | where Country="China"|stats count by Country|rename Country as "国家"
 ```
 
-### \_time时间字段的处理
+### time时间字段的处理
 
 #### 格式化时间
 
