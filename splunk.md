@@ -284,5 +284,42 @@ index="tutorialdata" sourcetype="access_combined_wcookie" action="purchase" stat
 
 ### eval命令和if函数 eval-对表达式进行计算并将结果存储在某个字段中
 
+#### if \(条件,True的结果，False的结果\)
+
+```
+index="apachedata" sourcetype="access_combined_wcookie" | eval success=if(status==200,"成功","错误")| timechart count by sucess
+解释：if函数判断status状态如果等于200则标记为成功字段，否则标记为错误字段，通过eval统计这些结果存储在sucess字段中，通过sucess字段排列，显示出成果与错误的数量
+
+图片 http://image.3001.net/images/20161214/14817246605235.png
+
+制作每一个主机的200、400和500事件数的对比图
+
+200标记为“成功”，400标记为“客户端错误”，500标记为“服务器错误”,保存为column chart可视化图，另存现有仪表面板
+
+index="apachedata" sourcetype="access_combined_wcookie" | chart count(eval(status==200)) as "成功", count(eval((400500 OR status==500)) as "服务器错误" by host
+解释： 统计status状态码等于200的别名则为成功，状态码大于400或者等于400，并且状态码要小于500则为 客户端错误，状态码大于500或者等于500的则为服务器错误，最后通过host字段排列
+
+58.png http://image.3001.net/images/20161214/14817248054795.png
+
+61.png http://image.3001.net/images/20161214/14817249315735.png
+```
+
+#### 通过IP地址获取地区、国家、城市等信息
+
+```
+iplocation: 使用3rd-party数据库解析IP地址的位置信息
+
+index="apachedata" sourcetype="access_combined_wcookie" | top 10 clientip|iplocation clientip
+解释：获取前十的IP，并且对前十IP所在地区进行解析显示
+
+图片 http://image.3001.net/images/20161214/1481725000233.png!small
+
+来自中国的IP有多少
+
+where:条件查询
+
+index="apachedata" sourcetype="access_combined_wcookie"|iplocation clientip | where Country="China"|stats count by Country|rename Country as "国家"
+```
+
 
 
