@@ -233,5 +233,22 @@ index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=pur
 图片 http://image.3001.net/images/20161214/14817243232072.png
 ```
 
+### Splunk的搜索语言\(timechart\)
+
+#### 使用相应的统计信息创建时间系列图表
+
+```
+
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | timechart count by host 
+[可以看到以每天作为时间分隔统计，在每24小时中满足条件的通过host字段进行统计]
+
+图片
+
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | timechart span=8h count by host
+[加入span参数来定义时间间隔为8h一次分隔统计]
+
+图片
+```
+
 
 
