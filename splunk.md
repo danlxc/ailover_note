@@ -321,5 +321,21 @@ where:条件查询
 index="apachedata" sourcetype="access_combined_wcookie"|iplocation clientip | where Country="China"|stats count by Country|rename Country as "国家"
 ```
 
+### \_time时间字段的处理
+
+#### 格式化时间
+
+```
+| eval my_time=_time | convert timeformat=“%Y-%m-%d %H:%M:%S” ctime(my_time) | rename my_time as “时间” index="apachedata" sourcetype="access_combined_wcookie"|table _time,clientip | rename _time as 时间,clientip as "用户IP"
+
+这种类型的搜索，所显示的时间为时间戳，为了更好地展示给用户看，我们可对该时间进行格式化。
+
+6.png http://image.3001.net/images/20161216/1481873974677.png!small
+index="apachedata" sourcetype="access_combined_wcookie"|eval my_time=_time|convert timeformat="%Y-%m-%d %H:%M:%S" ctime(my_time) | table my_time,clientip|rename my_time as "时间",clientip as "用户IP"
+解释：将_time赋值给my_time，最后通过ctime进行格式化，格式为timeformat指定的格式。
+
+7.png http://image.3001.net/images/20161216/14818740044022.png!small
+```
+
 
 
