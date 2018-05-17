@@ -89,10 +89,10 @@ index="tutorialdata" sourcetype="access_common" select | head 2
 
 ### Splunk的搜索语言\(top、rare、rename as \)
 
-_top, 显示字段最常见/出现次数最多的值
-rare, 显示字段出现次数最少的值
-limit，限制查询，如：limit 5，限制结果的前5条
-rename xx as zz : 为xx字段设置别名为zz,多个之间用 ，隔开
+_top, 显示字段最常见/出现次数最多的值  
+rare, 显示字段出现次数最少的值  
+limit，限制查询，如：limit 5，限制结果的前5条  
+rename xx as zz : 为xx字段设置别名为zz,多个之间用 ，隔开  
 fields ：保留或删除搜索结果中的字段。fiels – xx 删除xx字段，保留则不需要 – 符号_
 
 #### 获取出现次数最多的IP，降序排列
@@ -165,10 +165,10 @@ source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clien
 
 #### 对满足条件的事件进行统计
 
-_stats count\(\) ：括号中可以插入字段，主要作用对事件进行计数
-stats dc\(\)：distinct count，去重之后对唯一值进行统计
-stats values\(\)，去重复后列出括号中的字段内容
-stats list\(\)，未去重之后列出括号指定字段的内容
+_stats count\(\) ：括号中可以插入字段，主要作用对事件进行计数  
+stats dc\(\)：distinct count，去重之后对唯一值进行统计  
+stats values\(\)，去重复后列出括号中的字段内容  
+stats list\(\)，未去重之后列出括号指定字段的内容  
 stats avg\(\)，求平均值_
 
 ```
@@ -282,6 +282,7 @@ index="tutorialdata" sourcetype="access_combined_wcookie" action="purchase" stat
 图片 http://image.3001.net/images/20161214/14817244162831.png
 ```
 
-### eval命令和if函数
+### eval命令和if函数 eval-对表达式进行计算并将结果存储在某个字段中
+
 
 
