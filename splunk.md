@@ -282,5 +282,6 @@ index="tutorialdata" sourcetype="access_combined_wcookie" action="purchase" stat
 图片 http://image.3001.net/images/20161214/14817244162831.png
 ```
 
+### eval命令和if函数
 
 
