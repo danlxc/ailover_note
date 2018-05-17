@@ -238,7 +238,6 @@ index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=pur
 #### 使用相应的统计信息创建时间系列图表
 
 ```
-
 index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | timechart count by host 
 [可以看到以每天作为时间分隔统计，在每24小时中满足条件的通过host字段进行统计]
 
@@ -248,6 +247,39 @@ index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=pur
 [加入span参数来定义时间间隔为8h一次分隔统计]
 
 图片 http://image.3001.net/images/20161214/14817243465759.png
+```
+
+### 子搜索\(\[search \]\)
+
+子搜索包含在方括号\[\]中
+
+```
+注:以下字段中含义：action=purchase代表成功购买产品 status表示状态为200
+
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | top clientip limit=1
+(搜索满足成功购买产品、状态为200的，出现数量最多的IP，只取最高的那个)
+
+图片
+
+index="tutorialdata" sourcetype="access_combined_wcookie" "action=purchase" status=200 clientip="87.194.216.51"|stats count dc(productId),values(productId) by clientip
+（搜成功购买，状态为200，IP为:87.194.216.51,统计购买产品的数量，并且去重复地列出具体的名称，最后通过clientip排序显示）
+
+图片
+
+合并上面两个语句，子搜索放在[]中
+
+index="tutorialdata" sourcetype="access_combined_wcookie" action="purchase" status=200 [search index="tutorialdata" sourcetype="access_combined_wcookie" status=200 action="purchase" | top clientip limit=1 |table clientip]|stats count dc(productId),values(productId) by clientip
+(上面的clientip是通过子搜索 search 后面的结果，最后使用了“|table clientip”来只显示clientip字段，最后再进行如上次的统计数量和明细)
+
+图片
+
+可视化后添加到仪表盘，可将现有仪表盘生成PDF。
+
+图片
+
+还可以通过“PDF计划交付”来定时通过邮箱将报表发送给指定用户。
+
+图片
 ```
 
 
