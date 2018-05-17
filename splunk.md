@@ -207,30 +207,30 @@ chart count():
 index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host
 [统计字段status=200以及action=purchase的事件，并且以host字段来进行排列显示]
 
-图片
+图片 http://image.3001.net/images/20161214/14817242832838.png
 
-图片
+图片 http://image.3001.net/images/20161214/14817242961994.png
 
 chart max()
 
 index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host|chart max(count)
  [求出最大值]
 
-图片
+图片 http://image.3001.net/images/20161214/1481724306496.png
 
 chart min()
 
 index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host|chart min(count) 
  [求出最小值]
 
-图片
+图片 http://image.3001.net/images/20161214/14817243154180.png
 
 chart avg()
 
 index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host|chart avg(count)
 [根据第一次的结果求出平均值]
 
-图片
+图片 http://image.3001.net/images/20161214/14817243232072.png
 ```
 
 
