@@ -89,10 +89,10 @@ index="tutorialdata" sourcetype="access_common" select | head 2
 
 ### Splunk的搜索语言\(top、rare、rename as \)
 
-_top, 显示字段最常见/出现次数最多的值  
-rare, 显示字段出现次数最少的值  
-limit，限制查询，如：limit 5，限制结果的前5条  
-rename xx as zz : 为xx字段设置别名为zz,多个之间用 ，隔开  
+_top, 显示字段最常见/出现次数最多的值
+rare, 显示字段出现次数最少的值
+limit，限制查询，如：limit 5，限制结果的前5条
+rename xx as zz : 为xx字段设置别名为zz,多个之间用 ，隔开
 fields ：保留或删除搜索结果中的字段。fiels – xx 删除xx字段，保留则不需要 – 符号_
 
 #### 获取出现次数最多的IP，降序排列
@@ -122,8 +122,8 @@ source="tutorialdata.zip:*" index="tutorialdata" | top clientip |rename clientip
 #### 删除最后一个percent百分比字段
 
 ```
-source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields clientip count |rename clientip as “攻击源” |rename count as "攻击次数"  
- 或者： 
+source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields clientip count |rename clientip as “攻击源” |rename count as "攻击次数"
+ 或者：
 source="tutorialdata.zip:*" index="tutorialdata" | top clientip|fields - percent |rename clientip as “攻击源” |rename count as "攻击次数" | fields
 ```
 
@@ -165,10 +165,10 @@ source="tutorialdata.zip:*" index="tutorialdata" host="www1" | table _time,clien
 
 #### 对满足条件的事件进行统计
 
-_stats count\(\) ：括号中可以插入字段，主要作用对事件进行计数  
-stats dc\(\)：distinct count，去重之后对唯一值进行统计  
-stats values\(\)，去重复后列出括号中的字段内容  
-stats list\(\)，未去重之后列出括号指定字段的内容  
+_stats count\(\) ：括号中可以插入字段，主要作用对事件进行计数
+stats dc\(\)：distinct count，去重之后对唯一值进行统计
+stats values\(\)，去重复后列出括号中的字段内容
+stats list\(\)，未去重之后列出括号指定字段的内容
 stats avg\(\)，求平均值_
 
 ```
@@ -177,7 +177,7 @@ source="tutorialdata.zip:*" index="tutorialdata" host="www1"|stats count(clienti
 
 图片 http://image.3001.net/images/20161214/14817238617654.png
 
-index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" |stats dc(clientip) 
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" |stats dc(clientip)
 [dc去重复之后再进行统计]
 
 图片 http://image.3001.net/images/20161214/14817242495436.png
@@ -186,12 +186,12 @@ index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=pur
 
 图片 http://image.3001.net/images/20161214/14817242599180.png
 
-index="tutorialdata" sourcetype="access_combined_wcookie" |stats values(host) as "主机列表" 
+index="tutorialdata" sourcetype="access_combined_wcookie" |stats values(host) as "主机列表"
 [去除重复后列出字段的内容]
 
 图片 http://image.3001.net/images/20161214/14817242662553.png
 
- index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" |stats list(host) 
+ index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" |stats list(host)
 [未去除重复列出括号中的内容]
 
 图片 http://image.3001.net/images/20161216/14818732606406.png
@@ -220,7 +220,7 @@ index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=pur
 
 chart min()
 
-index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host|chart min(count) 
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | chart count by host|chart min(count)
  [求出最小值]
 
 图片 http://image.3001.net/images/20161214/14817243154180.png
@@ -238,7 +238,7 @@ index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=pur
 #### 使用相应的统计信息创建时间系列图表
 
 ```
-index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | timechart count by host 
+index="tutorialdata" sourcetype="access_combined_wcookie" status=200 "action=purchase" | timechart count by host
 [可以看到以每天作为时间分隔统计，在每24小时中满足条件的通过host字段进行统计]
 
 图片 http://image.3001.net/images/20161214/14817243325870.png
@@ -265,7 +265,7 @@ index="tutorialdata" sourcetype="access_combined_wcookie" "action=purchase" stat
 （搜成功购买，状态为200，IP为:87.194.216.51,统计购买产品的数量，并且去重复地列出具体的名称，最后通过clientip排序显示）
 
 图片 http://image.3001.net/images/20161214/14817243724305.png
- 
+
 合并上面两个语句，子搜索放在[]中
 
 index="tutorialdata" sourcetype="access_combined_wcookie" action="purchase" status=200 [search index="tutorialdata" sourcetype="access_combined_wcookie" status=200 action="purchase" | top clientip limit=1 |table clientip]|stats count dc(productId),values(productId) by clientip
