@@ -197,5 +197,9 @@ index="tutorialdata" sourcetype="access_combined_wcookie" |stats values(host) as
 图片 http://image.3001.net/images/20161216/14818732606406.png
 ```
 
+### Splunk的搜索语言\(chart\)
+
+
+
 
 
