@@ -8,4 +8,5 @@
   * [Python From Head First](python/python-from-head-first.md)
 * [Git](git.md)
 * [Splunk](splunk.md)
+  * [Splunk SDF for java](splunk/splunk-sdf-for-java.md)
 
