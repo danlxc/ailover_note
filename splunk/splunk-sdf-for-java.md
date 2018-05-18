@@ -1,5 +1,7 @@
 # 用户新增和累计注册、开户人数统计
 
+## Controller
+
 ```
 @Authorization(needAuth = false)
     @RequestMapping(value = "/registerAndOpenAccountPeopleCount", method = RequestMethod.POST)
