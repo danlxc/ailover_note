@@ -59,5 +59,86 @@
     }
 ```
 
+## Service
+
+```
+@Override
+    public SplunkResult call(String savedSearchName, SavedSearchDispatchArgs dispatchArgs) {
+        SplunkResult splunkResult=new SplunkResult();
+        Map resultMap = new HashMap();
+
+        List list = new ArrayList();
+        ResultsReaderJson resultsReader=null;
+        try {
+
+            SavedSearch savedSearch = spkService.getSavedSearches().get(savedSearchName);
+
+            if(savedSearch==null){
+                splunkResult.setCode(SplunkResult.EXECUTE_FAILURE);
+                splunkResult.setMsg("savedSearchName " + savedSearchName +" 未找到");
+                return splunkResult;
+            }
+
+            log.info("Run the '{}' search: {}",savedSearch.getName(),savedSearch.getSearch());
+
+            Job jobSavedSearch=null;
+            if(dispatchArgs==null){
+                 jobSavedSearch = savedSearch.dispatch();
+            }else{
+                jobSavedSearch = savedSearch.dispatch(dispatchArgs);
+            }
+
+            // Wait for the job to finish
+            while (!jobSavedSearch.isDone()) {
+                Thread.sleep(50);
+            }
+
+            JobResultsArgs resultsArgs = new JobResultsArgs();
+            resultsArgs.setOutputMode(JobResultsArgs.OutputMode.JSON);
+            resultsArgs.setCount(jobSavedSearch.getResultCount());
+
+            // Display results in JSON using ResultsReaderJson
+            InputStream results = jobSavedSearch.getResults(resultsArgs);
+
+            resultsReader = new ResultsReaderJson(results);
+            JSONArray jsonArray =new JSONArray();
+
+            HashMap<String, String> event = null;
+
+            while ((event = resultsReader.getNextEvent()) != null) {
+                jsonArray.add(JSONObject.fromObject(event));
+                list.add(JSONObject.fromObject(event));
+            }
+
+            splunkResult.setData(list);
+            splunkResult.setCode(SplunkResult.EXECUTE_SUCCESS);
+            splunkResult.setMsg("成功");
+           // resultMap.put(RESULT_KEY_NAME,list);
+
+//            return jsonArray.toString();
+            return splunkResult;
+
+        } catch (InterruptedException e1) {
+            log.error("splunk search 查询失败",e1);
+            splunkResult.setCode(SplunkResult.EXECUTE_FAILURE);
+            splunkResult.setMsg("savedSearchName " + savedSearchName +" 未找到");
+            return splunkResult;
+        } catch (IOException e2) {
+            log.error("splunk search 查询失败",e2);
+            splunkResult.setCode(SplunkResult.EXECUTE_FAILURE);
+            splunkResult.setMsg("savedSearchName " + savedSearchName +" 未找到");
+            return splunkResult;
+        }finally {
+            if(resultsReader!=null){
+                try {
+                    resultsReader.close();
+                } catch (IOException e) {
+
+                }
+            }
+        }
+    }
+```
+
 
 
