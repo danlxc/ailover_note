@@ -9,5 +9,6 @@
 * [Git](git.md)
 * [Splunk](splunk.md)
   * [Splunk SDF for java](splunk/splunk-sdf-for-java.md)
+  * [Splunk rex](splunk/splunk-rex.md)
 * [SH](sh.md)
 
