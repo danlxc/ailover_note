@@ -13,5 +13,11 @@ which ipython
 whereis ipython
 ```
 
+## 查询命令历史
+
+```
+history  | grep aa 
+```
+
 
 
