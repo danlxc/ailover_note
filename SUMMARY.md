@@ -12,4 +12,5 @@
   * [Splunk rex](splunk/splunk-rex.md)
   * [Splunk SPL for SQL](splunk/splunk-spl-for-sql.md)
 * [SH](sh.md)
+* [Linux](linux.md)
 
