@@ -35,5 +35,64 @@ git remote add origin git@github.com:danlxc/danny.git
 git push -u origin master
 ```
 
+# 创建并合并分支
+
+查看分支：`git branch`
+
+创建分支：`git branch <name>`
+
+切换分支：`git checkout <name>`
+
+创建+切换分支：`git checkout -b <name>`
+
+合并某分支到当前分支：`git merge <name>`
+
+删除分支：`git branch -d <name>`
+
+## 细节详情
+
+创建`dev`分支，然后切换到`dev`分支：
+
+```
+$ git checkout -b dev
+
+```
+
+`git checkout`命令加上`-b`参数表示创建并切换，相当于以下两条命令：
+
+```
+$ git branch dev
+
+$ git checkout dev
+```
+
+用`git branch`命令查看当前分支：
+
+```
+$ git branch
+* dev
+  master
+```
+
+把`dev`分支的工作成果合并到`master`分支上：
+
+```
+$ git merge dev
+```
+
+删除`dev`分支了：
+
+```
+$ git branch -d dev
+```
+
+## 解决冲突
+
+用带参数的`git log`也可以看到分支的合并情况：
+
+```
+$ git log --graph --pretty=oneline --abbrev-commit
+```
+
 
 
