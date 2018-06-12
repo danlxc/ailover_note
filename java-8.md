@@ -8,6 +8,9 @@ LocalDateTime.now().plusDays(1).format(DateTimeFormatter.ofPattern(DateUtil.YYYY
 ## 过滤+聚合
 
 ```
+// 查询所有用户
+List<FundCastsurelySingleForAutoInvestDTO> List = fundCastsurelySingleSOAService.querySumCostmoneyByCustno();
+
 //筛选出触发止损的用户
 List<FundCastsurelySingleForAutoInvestDTO> fcsbList = List.stream().filter(l -> {
     BigDecimal fundMarketValue = new BigDecimal(l.getFundMarketValue());
