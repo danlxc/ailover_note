@@ -15,6 +15,10 @@ List<FundCastsurelySingleForAutoInvestDTO> fcsbList = List.stream().filter(l -> 
     BigDecimal stopLoss = l.getStopLoss();
     return (fundMarketValue.subtract(costMoney).divide(costMoney).compareTo(stopLoss) <= 0);
 }).collect(Collectors.toList());
+
+List<SmartBetaProportionBeanBase> newBeanBaseList = beanBaseList.stream()
+    .filter(ov->"smartbeta".equals(ov.getSmartbetaName()))
+    .collect(Collectors.toList());
 ```
 
 
