@@ -31,5 +31,21 @@ GROUP BY
 </update>
 ```
 
+## 获得奇偶数
+
+```
+获取偶数的方法
+
+select * from pos_info_report_tmp_20110712 r
+
+where mod(r.id,2) = 0;
+
+获取奇数的方法
+
+select * from pos_info_report_tmp_20110712 r
+
+where mod(r.id,2) = 1;
+```
+
 
 
