@@ -120,11 +120,11 @@ git revert    文件层面    （然而并没有）
 |  | git reset --mixed HEAD | 将你当前的改动从缓存区中移除，但是这些改动还留在工作目录中 |
 |  | git reset --hard HEAD | 完全舍弃你没有提交的改动 |
 | git reset | 文件层面 | 将文件从缓存区中移除 |
-|  |  git reset HEAD~2 foo.py |  下面这个命令会将倒数第二个提交中的foo.py加入到缓存区中，供下一个提交使用 |
-|  |  git reset HEAD foo.py |  |
+|  | git reset HEAD~2 foo.py | 将倒数第二个提交中的foo.py加入到缓存区中，供下一个提交使用 |
+|  | git reset HEAD foo.py |  将当前的 foo.py 从缓存区中移除出去，而不会影响工作目录中对 foo.py 的更改 |
 | git checkout | 提交层面 | 切换分支或查看旧版本 |
 |  | git checkout hotfix | 将HEAD移到一个新的分支，然后更新工作目录 |
-|  | git checkout HEAD~2 | checkout 到当前提交的祖父提交。 |
+|  | git checkout HEAD~2 | 将checkout 到当前提交的祖父提交。 |
 | git checkout | 文件层面 | 舍弃工作目录中的更改 |
 | git revert | 提交层面 | 在公共分支上回滚更改 |
 |  | git revert HEAD~2 | 找出倒数第二个提交，然后创建一个新的提交来撤销这些更改，然后把这个提交加入项目中。 |
