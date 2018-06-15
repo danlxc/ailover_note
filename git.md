@@ -55,7 +55,6 @@ git push -u origin master
 
 ```
 $ git checkout -b dev
-
 ```
 
 `git checkout`命令加上`-b`参数表示创建并切换，相当于以下两条命令：
@@ -92,6 +91,14 @@ $ git branch -d dev
 
 ```
 $ git log --graph --pretty=oneline --abbrev-commit
+```
+
+## 撤销某次的提交,保留其后的提交
+
+```
+git revert HEAD                     //撤销最近一次提交
+git revert HEAD~1                   //撤销上上次的提交，注意：数字从0开始
+git revert 0ffaacc                  //撤销0ffaacc这次提交
 ```
 
 
