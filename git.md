@@ -101,5 +101,26 @@ git revert HEAD~1                   //撤销上上次的提交，注意：数字
 git revert 0ffaacc                  //撤销0ffaacc这次提交
 ```
 
+## 回退的几个易混淆内容
+
+```
+命令 作用域	常用情景
+git reset	提交层面	在私有分支上舍弃一些没有提交的更改
+git reset	文件层面	将文件从缓存区中移除
+git checkout	提交层面	切换分支或查看旧版本
+git checkout	文件层面	舍弃工作目录中的更改
+git revert	提交层面	在公共分支上回滚更改
+git revert	文件层面	（然而并没有）
+```
+
+| 命令 | 作用域 | 常用情景 |
+| :--- | :--- | :--- |
+| git reset | 提交层面 | 在私有分支上舍弃一些没有提交的更改 |
+| git reset | 文件层面 | 将文件从缓存区中移除 |
+| git checkout | 提交层面 | 切换分支或查看旧版本 |
+| git checkout | 文件层面 | 舍弃工作目录中的更改 |
+| git revert | 提交层面 | 在公共分支上回滚更改 |
+| git revert | 文件层面 | （然而并没有） |
+
 
 
