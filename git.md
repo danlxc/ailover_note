@@ -146,8 +146,6 @@ Merge made by the 'recursive' strategy.
  1 file changed, 1 insertion(+)
 ```
 
-
-
 ## Bug分支  git stash
 
 工作区是干净的，刚才的工作现场存到哪去了？用`git stash list`命令看看：
@@ -155,6 +153,29 @@ Merge made by the 'recursive' strategy.
 ```
 $ git stash list
 stash@{0}: WIP on dev: f52c633 add merge
+```
+
+工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：
+
+一是用`git stash apply`恢复，但是恢复后，stash内容并不删除，你需要用`git stash drop`来删除；
+
+另一种方式是用`git stash pop`，恢复的同时把stash内容也删了：
+
+```
+$ git stash pop
+On branch dev
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    new file:   hello.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   readme.txt
+
+Dropped refs/stash@{0} (5d677e2ee266f39ea296182fb2354265b91b3b2a)
 ```
 
 
