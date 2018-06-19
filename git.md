@@ -178,5 +178,11 @@ Changes not staged for commit:
 Dropped refs/stash@{0} (5d677e2ee266f39ea296182fb2354265b91b3b2a)
 ```
 
+你可以多次stash，恢复的时候，先用`git stash list`查看，然后恢复指定的stash，用命令：
+
+```
+$ git stash apply stash@{0}
+```
+
 
 
