@@ -1,7 +1,7 @@
 ## wirich 项目
 
 ```
-CountDownLatch latch = new CountDownLatch(fcsbList.size());//两个工人的协作
+CountDownLatch latch = new CountDownLatch(fcsbList.size());//多个工人的协作
 ExecutorService executorService = Executors.newWorkStealingPool(cpuCount);
 
 //循环每一个然后分配线程去处理业务
