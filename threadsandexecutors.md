@@ -68,7 +68,7 @@ public static BigDecimal calc(GroupFundBuyInfoDTO groupFundBuyInfoDTO, Map<Strin
 
     BigDecimal fundAmount = fundAmountMap.get(groupFundBuyInfoDTO.getFundId());
     try {
-    
+        // 业务逻辑
     } catch (Exception e) {
         log.error("组合购买异步错误", e);
     } finally {
