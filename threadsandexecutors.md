@@ -57,6 +57,24 @@ try {
     exs.shutdown();
 }
 return list;
+
+public static BigDecimal calc(GroupFundBuyInfoDTO groupFundBuyInfoDTO, Map<String, BigDecimal> fundAmountMap
+        , CountDownLatch latch, String custNo, String tradePassword, String moneyAccount, String transactionAccountId, String channelId, String merchantId, String groupCode, String groupName, String groupFundBuyId, String groupFundBuyInfoId
+        , FundInfoSOAService fundInfoSOAService
+        , SzKingWebService szKingWebService, TradeIdWorkerService tradeIdWorkerService
+        , GroupFundBuySingleFundSOAService<GroupFundBuySingleFundBean> groupFundBuySingleFundSOAService
+        , GroupFundMainInfoSOAService<GroupFundMainInfoBean> groupFundMainInfoSOAService
+        , FundDividendService fundDividendService) {
+
+    BigDecimal fundAmount = fundAmountMap.get(groupFundBuyInfoDTO.getFundId());
+    try {
+    
+    } catch (Exception e) {
+        log.error("组合购买异步错误", e);
+    } finally {
+        latch.countDown();
+    }
+    return fundAmount;
 ```
 
 
