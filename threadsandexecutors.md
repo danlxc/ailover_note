@@ -24,7 +24,8 @@ try {
 } catch (InterruptedException e) {
     log.error("{} error~~", s, e);
 } finally {
-    executorService.shutdown();
+    //其实在使用Spring等框架来管理类的生命周期的条件下，也没有必要调用这两个方法来关闭线程池，线程池的生命周期完全由该线程池所属的Spring管理的类决定
+    executorService.shutdown(); 
 }
 ```
 
