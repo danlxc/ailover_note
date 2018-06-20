@@ -1,5 +1,7 @@
 ## wirich 项目
 
+### 线程池处理无返回值\(\)
+
 ```
 CountDownLatch latch = new CountDownLatch(fcsbList.size());//多个工人的协作
 ExecutorService executorService = Executors.newWorkStealingPool(cpuCount);
@@ -28,6 +30,33 @@ try {
     //线程池的生命周期完全由该线程池所属的Spring管理的类决定
     executorService.shutdown(); 
 }
+```
+
+### 线程池处理又返回值
+
+```
+CountDownLatch latch = new CountDownLatch(fundList.size());
+ExecutorService exs = Executors.newFixedThreadPool(cpuCount);
+List<BigDecimal> list = new ArrayList<>();//将每笔成功购买的金额存入list
+
+    fundList.forEach(groupFundBuyInfoDTO -> CompletableFuture.supplyAsync(() -> calc(
+            groupFundBuyInfoDTO, fundAmountMap, latch
+            , custNo, tradePassword, moneyAccount, transactionAccountId, channelId, merchantId, groupCode, groupName, groupFundBuyId, groupFundBuyInfoId
+            , fundInfoSOAService
+            , szKingWebService
+            , tradeIdWorkerService
+            , groupFundBuySingleFundSOAService
+            , groupFundMainInfoSOAService
+            , fundDividendService), exs).whenComplete((v, e) -> list.add(v)));
+
+try {
+    latch.await();
+} catch (Exception e) {
+    log.error("组合购买异步错误", e);
+} finally {
+    exs.shutdown();
+}
+return list;
 ```
 
 
