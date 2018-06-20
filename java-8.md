@@ -26,14 +26,14 @@ List<SmartBetaProportionBeanBase> newBeanBaseList = beanBaseList.stream()
 
 #### Collect
 
-
+As you can see it's very simple to construct a list from the elements of a stream. Need a set instead of list - just use `Collectors.toSet().`
 
 ```
 List<Person> filtered =
     persons
         .stream()
         .filter(p -> p.name.startsWith("P"))
-        .collect(Collectors.toList());
+        .collect(Collectors.toList()); //
 
 System.out.println(filtered);    // [Peter, Pamela]
 ```
