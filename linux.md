@@ -16,7 +16,13 @@ whereis ipython
 ## 查询命令历史
 
 ```
-history  | grep aa 
+history  | grep aa
+```
+
+## 查询进程
+
+```
+ps -ef | grep aa
 ```
 
 
