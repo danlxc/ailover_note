@@ -66,5 +66,21 @@ public static BigDecimal calc(GroupFundBuyInfoDTO groupFundBuyInfoDTO
     return fundAmount;
 ```
 
+#### Callbale
+
+Callbale也可以像runnbales一样提交给 executor services。但是callables的结果怎么办？因为`submit()`不会等待任务完成，executor service不能直接返回callable的结果。不过，executor 可以返回一个`Future`类型的结果，它可以用来在稍后某个时间取出实际的结果。
+
+```
+ExecutorService executor = Executors.newFixedThreadPool(1);
+Future<Integer> future = executor.submit(task);
+
+System.out.println("future done? " + future.isDone());
+
+Integer result = future.get();
+
+System.out.println("future done? " + future.isDone());
+System.out.print("result: " + result);
+```
+
 
 
