@@ -39,15 +39,8 @@ CountDownLatch latch = new CountDownLatch(fundList.size());
 ExecutorService exs = Executors.newFixedThreadPool(cpuCount);
 List<BigDecimal> list = new ArrayList<>();//将每笔成功购买的金额存入list
 
-    fundList.forEach(groupFundBuyInfoDTO -> CompletableFuture.supplyAsync(() -> calc(
-            groupFundBuyInfoDTO, fundAmountMap, latch
-            , custNo, tradePassword, moneyAccount, transactionAccountId, channelId, merchantId, groupCode, groupName, groupFundBuyId, groupFundBuyInfoId
-            , fundInfoSOAService
-            , szKingWebService
-            , tradeIdWorkerService
-            , groupFundBuySingleFundSOAService
-            , groupFundMainInfoSOAService
-            , fundDividendService), exs).whenComplete((v, e) -> list.add(v)));
+fundList.forEach(groupFundBuyInfoDTO -> CompletableFuture.supplyAsync(() -> 
+    calc(groupFundBuyInfoDTO, fundAmountMap, latch), exs).whenComplete((v, e) -> list.add(v)));
 
 try {
     latch.await();
