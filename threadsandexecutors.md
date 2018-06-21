@@ -72,8 +72,8 @@ public static BigDecimal calc(GroupFundBuyInfoDTO groupFundBuyInfoDTO
 
 ```
 List<Callable<BigDecimal>> callables = null;
-for (GroupFundBuyInfoDTO groupFundBuyInfoDTO : fundList) {
-    callables = Arrays.asList(() -> calc(groupFundBuyInfoDTO, fundAmountMap, latch));
+for (GroupFundBuyInfoDTO g: fundList) {
+    callables = Arrays.asList(() -> calc(g, fundAmountMap, latch));
 }
 
 try {
