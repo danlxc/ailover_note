@@ -192,7 +192,7 @@ $ git stash apply stash@{0}
 
 ## 多人协作
 
-### 小结
+
 
 * 查看远程库信息，使用`git remote -v`；
 
@@ -212,7 +212,7 @@ $ git stash apply stash@{0}
 
 * rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。
 
-## 创建标签 `tag `
+## 创建标签 `tag`
 
 * 命令`git tag <tagname>`用于新建一个标签，默认为`HEAD`，也可以指定一个commit id；
 
