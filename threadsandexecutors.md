@@ -34,6 +34,8 @@ try {
 
 ### 线程池处理又返回值
 
+1:
+
 ```
 CountDownLatch latch = new CountDownLatch(fundList.size());
 ExecutorService exs = Executors.newFixedThreadPool(cpuCount);
@@ -64,6 +66,21 @@ public static BigDecimal calc(GroupFundBuyInfoDTO groupFundBuyInfoDTO
         latch.countDown();
     }
     return fundAmount;
+```
+
+2:
+
+```
+List<Callable<BigDecimal>> callables = null;
+for (GroupFundBuyInfoDTO groupFundBuyInfoDTO : fundList) {
+    callables = Arrays.asList(() -> calc(groupFundBuyInfoDTO, fundAmountMap, latch));
+}
+
+try {
+    List<Future<BigDecimal>> collect = exs.invokeAll(callables).stream().collect(Collectors.toList());
+} catch (InterruptedException e) {
+    e.printStackTrace();
+}
 ```
 
 #### Callbale
