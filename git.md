@@ -184,5 +184,11 @@ Dropped refs/stash@{0} (5d677e2ee266f39ea296182fb2354265b91b3b2a)
 $ git stash apply stash@{0}
 ```
 
+## Feature分支  git branch -D &lt;name&gt;
+
+开发一个新feature，最好新建一个分支；
+
+如果要丢弃一个没有被合并过的分支，可以通过`git branch -D <name>`强行删除。
+
 
 
