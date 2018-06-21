@@ -72,7 +72,6 @@ public static BigDecimal calc(GroupFundBuyInfoDTO groupFundBuyInfoDTO
 
 ```
 ExecutorService exs = Executors.newFixedThreadPool(cpuCount);
-
 List<Callable<BigDecimal>> callables = null;
 for (GroupFundBuyInfoDTO g: fundList) {
     callables = Arrays.asList(() -> calc(g, fundAmountMap, latch));
