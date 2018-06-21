@@ -77,7 +77,10 @@ for (GroupFundBuyInfoDTO groupFundBuyInfoDTO : fundList) {
 }
 
 try {
-    List<Future<BigDecimal>> collect = exs.invokeAll(callables).stream().collect(Collectors.toList());
+    List<BigDecimal> collect = new ArrayList<>();
+    for (Future<BigDecimal> v : exs.invokeAll(callables)) {
+        collect.add(v.get());
+    }
 } catch (InterruptedException e) {
     e.printStackTrace();
 }
