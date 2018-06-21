@@ -38,7 +38,7 @@ try {
 
 ```
 CountDownLatch latch = new CountDownLatch(fundList.size());
-ExecutorService exs = Executors.newFixedThreadPool(cpuCount);
+ExecutorService exs = Executors.newWorkStealingPool(cpuCount);
 List<BigDecimal> list = new ArrayList<>();//将每笔成功购买的金额存入list
 
 fundList.forEach(groupFundBuyInfoDTO -> CompletableFuture.supplyAsync(() -> 
@@ -71,7 +71,7 @@ public static BigDecimal calc(GroupFundBuyInfoDTO groupFundBuyInfoDTO
 2:
 
 ```
-ExecutorService exs = Executors.newFixedThreadPool(cpuCount);
+ExecutorService exs = Executors.newWorkStealingPool(cpuCount);
 List<Callable<BigDecimal>> callables = null;
 for (GroupFundBuyInfoDTO g: fundList) {
     callables = Arrays.asList(() -> calc(g, fundAmountMap, latch));
