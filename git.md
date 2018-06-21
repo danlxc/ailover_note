@@ -206,15 +206,19 @@ $ git stash apply stash@{0}
 
 * 从远程抓取分支，使用`git pull`，如果有冲突，要先处理冲突。
 
-
-
 ## rebase
 
 * rebase操作可以把本地未push的分叉提交历史整理成直线；
 
 * rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。
 
+## 创建标签
 
+* 命令`git tag <tagname>`用于新建一个标签，默认为`HEAD`，也可以指定一个commit id；
+
+* 命令`git tag -a <tagname> -m "blablabla..."`可以指定标签信息；
+
+* 命令`git tag`可以查看所有标签。
 
 
 
