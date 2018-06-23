@@ -230,12 +230,18 @@ $ git stash apply stash@{0}
 
 ## 配置别名
 
-
-
 ```
+$ git config --global alias.st status
 $ git config --global alias.co checkout
 $ git config --global alias.ci commit
 $ git config --global alias.br branch
+把暂存区的修改撤销掉（unstage），重新放回工作区
+$ git config --global alias.unstage 'reset HEAD'
+显示最后一次提交信息
+$ git config --global alias.last 'log -1'
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+Git配置文件都放在.git/config文件中
 ```
 
 
