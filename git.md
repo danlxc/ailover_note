@@ -220,8 +220,6 @@ $ git stash apply stash@{0}
 
 ## 操作标签
 
-
-
 * 命令`git push origin <tagname>`可以推送一个本地标签；
 
 * 命令`git push origin --tags`可以推送全部未推送过的本地标签；
@@ -229,6 +227,16 @@ $ git stash apply stash@{0}
 * 命令`git tag -d <tagname>`可以删除一个本地标签；
 
 * 命令`git push origin :refs/tags/<tagname>`可以删除一个远程标签。
+
+## 配置别名
+
+
+
+```
+$ git config --global alias.co checkout
+$ git config --global alias.ci commit
+$ git config --global alias.br branch
+```
 
 
 
