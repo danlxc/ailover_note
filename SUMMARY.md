@@ -12,6 +12,7 @@
 * [Git](git.md)
 * [SH](sh.md)
 * [Linux](linux.md)
+* [splunk.md](splunk.md)
 * [java-8.md](java-8.md)
 
 
