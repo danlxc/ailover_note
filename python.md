@@ -1,1 +1,0 @@
-Python note from Head first and myself
