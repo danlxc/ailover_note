@@ -2,3 +2,7 @@
 
 
 
+db.collection.createIndex\( { name: -1 } \)
+
+
+
