@@ -34,8 +34,6 @@ IMPORTANT
 
 You may not create compound indexes that have`hashed`index type. You will receive an error if you attempt to create a compound index that includes[a hashed index field](https://docs.mongodb.com/manual/core/index-hashed/).
 
-
-
 # MongoDB索引管理－索引的创建、查看、删除
 
 索引是提高查询查询效率最有效的手段。索引是一种特殊的数据结构，索引以易于遍历的形式存储了数据的部分内容（如：一个特定的字段或一组字段值），索引会按一定规则对存储值进行排序，而且索引的存储位置在内存中，所在从索引中检索数据会非常快。如果没有索引，MongoDB必须扫描集合中的每一个文档，这种扫描的效率非常低，尤其是在数据量较大时。
@@ -43,9 +41,6 @@ You may not create compound indexes that have`hashed`index type. You will receiv
 1. [创建／重建索引](https://itbilu.com/database/mongo/E1tWQz4_e.html#index-create)
 2. [查看索引](https://itbilu.com/database/mongo/E1tWQz4_e.html#show-index)
 3. [删除索引](https://itbilu.com/database/mongo/E1tWQz4_e.html#drop-index)
-
-  
-
 
 ### 1. 创建／重建索引 {#index-create}
 
@@ -103,9 +98,6 @@ db.COLLECTION_NAME.ensureIndex(keys[,options])
 
 _注意：_`1.8`版本之前创建索引使用`createIndex()`，`1.8`版本之后已移除该方法
 
-  
-
-
 #### 1.2 重建索引`reIndex()` {#reIndex}
 
 ```
@@ -122,34 +114,28 @@ db.COLLECTION_NAME.reIndex()
   "nIndexes" : 2,
   "indexes" : [
     {
-	  "key" : {
-		"_id" : 1
-	  },
-	  "name" : "_id_",
-		"ns" : "newDB.sites"
-	},
-	{
-	  "key" : {
-		"name" : 1,
-		"domain" : -1
-	  },
-	  "name" : "name_1_domain_-1",
-	  "ns" : "newDB.sites"
-	}
+      "key" : {
+        "_id" : 1
+      },
+      "name" : "_id_",
+        "ns" : "newDB.sites"
+    },
+    {
+      "key" : {
+        "name" : 1,
+        "domain" : -1
+      },
+      "name" : "name_1_domain_-1",
+      "ns" : "newDB.sites"
+    }
   ],
   "ok" : 1
 }
 ```
 
-  
-
-
 ### 2. 查看索引 {#show-index}
 
 MongoDB提供了查看索引信息的方法：`getIndexes()`方法可以用来查看集合的所有索引，`totalIndexSize()`查看集合索引的总大小，`db.system.indexes.find()`查看数据库中所有索引信息。
-
-  
-
 
 #### 2.1 查看集合中的索引`getIndexes()` {#getIndexes}
 
@@ -164,27 +150,24 @@ db.COLLECTION_NAME.getIndexes()
 db.sites.getIndexes()
 [
   {
-	"v" : 1,
-	"key" : {
-	  "_id" : 1
-	},
-	"name" : "_id_",
-	"ns" : "newDB.sites"
+    "v" : 1,
+    "key" : {
+      "_id" : 1
+    },
+    "name" : "_id_",
+    "ns" : "newDB.sites"
   },
   {
-	"v" : 1,
-	"key" : {
-	  "name" : 1,
-	  "domain" : -1
-	},
-	"name" : "name_1_domain_-1",
-	"ns" : "newDB.sites"
+    "v" : 1,
+    "key" : {
+      "name" : 1,
+      "domain" : -1
+    },
+    "name" : "name_1_domain_-1",
+    "ns" : "newDB.sites"
   }
 ]
 ```
-
-  
-
 
 #### 2.2 查看集合中的索引大小`totalIndexSize()` {#totalIndexSize}
 
@@ -200,9 +183,6 @@ db.COLLECTION_NAME.totalIndexSize()
 16352
 ```
 
-  
-
-
 #### 2.3 查看数据库中所有索引`db.system.indexes.find()` {#indexes}
 
 ```
@@ -215,9 +195,6 @@ db.system.indexes.find()
 >
  db.system.indexes.find()
 ```
-
-  
-
 
 ### 3. 删除索引 {#drop-index}
 
@@ -236,9 +213,6 @@ db.COLLECTION_NAME.dropIndex("INDEX-NAME")
  db.sites.dropIndex("name_1_domain_-1")
 { "nIndexesWas" : 2, "ok" : 1 }
 ```
-
-  
-
 
 #### 3.3 删除所有索引`dropIndexes()` {#dropIndexes}
 
