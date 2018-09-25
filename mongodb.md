@@ -232,5 +232,26 @@ db.COLLECTION_NAME.dropIndexes()
 }
 ```
 
+## find
+
+字段是否存在：
+
+```
+The { name : { $exists: false } } query matches documents that do not contain the item field:
+
+db.users.find( { name : { $exists: false } } )
+```
+
+$or
+
+```
+{$or:
+  [{"images.operation_license" : {$exists: true}},
+   {"images.drivers_license" : {$exists: true }},
+   {"images.operation_license" : {$exists: true }} 
+  ]
+},
+```
+
 
 
