@@ -259,5 +259,19 @@ $or
 db.student.find({name:{$regex:/joe/}})
 ```
 
+查询返回特定
+
+```
+db.collection.find(query, projection)
+
+Projection
+The projection parameter determines which fields are returned in the matching documents. The projection parameter takes a document of the following form:
+
+{ field1: <value>, field2: <value> ... }
+The <value> can be any of the following:
+1 or true to include the field in the return documents.
+0 or false to exclude the field.
+```
+
 
 
