@@ -253,5 +253,11 @@ $or
 },
 ```
 
+模糊查询
+
+```
+db.student.find({name:{$regex:/joe/}})
+```
+
 
 
